@@ -24,7 +24,7 @@ public class RazorpayPaymentGateway implements PaymentGateway {
             paymentLinkRequest.put("amount",amount);
             paymentLinkRequest.put("currency","INR");
             paymentLinkRequest.put("accept_partial",false);
-            paymentLinkRequest.put("expire_by", 1700249320);
+            paymentLinkRequest.put("expire_by", 1700502051);
             paymentLinkRequest.put("reference_id",orderId);
             paymentLinkRequest.put("description","Payment for order #" + orderId);
             JSONObject customer = new JSONObject();
@@ -39,9 +39,11 @@ public class RazorpayPaymentGateway implements PaymentGateway {
             paymentLinkRequest.put("reminder_enable",true);
             paymentLinkRequest.put("callback_url","https://example-callback-url.com/");
             paymentLinkRequest.put("callback_method","get");
+//            paymentLinkRequest.
 
             PaymentLink payment = razorpayClient.paymentLink.create(paymentLinkRequest);
-            return payment.get("short_url").toString();
+            return payment.toString();
+//            return payment.get("short_url").toString();
         } catch (Exception e) {
             System.out.println(e.toString());
             return "something is wrong";
